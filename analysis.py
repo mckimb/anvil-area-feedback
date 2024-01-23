@@ -28,6 +28,20 @@ blue = '#2b7db5'
 gold = '#d19711'
 
 
+# take the raw cloud fraction data and process into two layers suitable for predicting all sky radiative Effects.
+# load in the high cloud data with 0.3 < tau < 5
+cf_high = cp.load_highcf()
+# apply rolling average, look above 8km, etc
+cfh_array, heights, times, lats, lons = cp.process_highcf(cf_high)
+fh_0pt03_max, zh_0pt03_max, _, _ = cp.anvil_top(cfh_array, heights, times, lats, lons, method='max', save=True, cf_c=0.03)
+
+# load in the low cloud data
+cf_low = cp.load_lowcf()
+# apply rolling average, look below 8 km, etc
+cfl_array, heights, times, lats, lons = cp.process_lowcf(cf_low)
+fl_0pt03_max, zl_0pt03_max, _, _ = cp.shallow_top(cfl_array, heights, times, lats, lons, method='centroid', save=True, cf_c=0.03)
+
+
 # caculate inferred cloud radiative effects
 cre, cre_lw, cre_sw, cre_h, cre_l, m_lh, fh, fl, th, tl, ts, scs, rcs, a_surf, ceres_cre, cre_h_sw, cre_h_lw, m_lh_sw, ah, al, insol, scs, rcs, n, cre_l_lw, cre_l_sw = cp.predicted_allsky5(cf_c='3', method='max')
 
