@@ -3,7 +3,7 @@ Scripts used for analysis in  [_Weak anvil cloud area feedback suggested by phys
 
 ### Figures
 * If one wants to quickly reproduce the figures just using the underlying data (from ./plotting_data/), see github_plotting.ipynb on this repository or on [nbviewer.org](https://nbviewer.org/github/mckimb/anvil-area-feedback/blob/main/github_plotting.ipynb).
-* If one wants to reproduce the figures in the manuscript from scratch, see analysis.py. This will require some reformatting of directory locations and downloading public data (see below) to work.
+* If one wants to reproduce the figures in the manuscript from scratch, see analysis.py. This is the more difficult option because it will require editing directory locations and downloading public data (see below) to work.
 
 
 ### Raw Data
